@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Width vs Max-width Example</title>
+    <style>
+        .container {
+            border: 2px solid #333;
+            margin: 20px;
+            padding: 10px;
+        }
+        .width-example {
+            width: 300px;
+            background-color: #ffcccc;
+        }
+        .max-width-example {
+            max-width: 300px;
+            background-color: #ccffcc;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Width: 300px</h2>
+        <div class="width-example">
+            This div has a fixed width of 300px. It will always be 300px wide, even if the container is narrower.
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Max-width: 300px</h2>
+        <div class="max-width-example">
+            This div has a max-width of 300px. It can be narrower if the container is less than 300px wide, but will never exceed 300px.
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero Dimension Parent Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .parent {
+    
+            border: 2px dashed red;
+            position: absolute;
+        }
+
+        .child {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            color: white;
+            font-weight: bold;
+        }
+
+        .child1 {
+            background-color: blue;
+            top: 0;
+            left: 0;
+        }
+
+        .child2 {
+            background-color: green;
+            top: 50px;
+            left: 50px;
+        }
+
+        .child3 {
+            background-color: orange;
+            top: 100px;
+            left: 100px;
+        }
+
+        .spacer {
+            height: 250px;
+            border: 2px solid rgb(46, 29, 29);
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Parent with Zero Dimensions</h2>
+    <div class="parent">
+        Lorem ipsum dolor sit amet co
+        <div class="child child1">Child 1</div>
+        <div class="child child2">Child 2</div>
+        <div class="child child3">Child 3</div>
+    </div>
+    <div class="spacer"></div>
+</body>
+
+</html>
