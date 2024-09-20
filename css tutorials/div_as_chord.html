@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Circular Container with Accurate Chord-Width Children</title>
+    <style>
+        .circle {
+            width: 32rem;
+            height: 32rem;
+            border-radius: 50%;
+            background-color: lightblue;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .child {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 2px solid red;
+            background-color: beige;
+            margin: 2px 0;
+            height: 30px;
+            white-space: nowrap;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 0 5px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="circle">
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+        <div class="child">hello</div>
+    </div>
+
+    <script>
+        function calculateChordWidth(radius, height) {
+            const y = Math.abs(radius - height);
+            return 2 * Math.sqrt(radius * radius - y * y);
+        }
+
+        function positionAndSizeChildren() {
+            const circle = document.querySelector('.circle');
+            const children = circle.querySelectorAll('.child');
+            const radius = circle.offsetWidth / 2;
+            const totalHeight = circle.offsetHeight;
+            const childHeight = children[0].offsetHeight;
+            const spacing = (totalHeight - childHeight * children.length) / (children.length + 1);
+
+            children.forEach((child, index) => {
+                const topPosition = spacing * (index + 1) + childHeight * index;
+                child.style.top = `${topPosition}px`;
+
+                const topChordWidth = calculateChordWidth(radius, topPosition);
+                const bottomChordWidth = calculateChordWidth(radius, topPosition + childHeight);
+                
+                // Use the smaller of the two chord widths
+                const chordWidth = Math.min(topChordWidth, bottomChordWidth);
+                
+                child.style.width = `${chordWidth}px`;
+            });
+        }
+
+        // Run the positioning function after the DOM is fully loaded
+        document.addEventListener('DOMContentLoaded', positionAndSizeChildren);
+
+        // Rerun the positioning if the window is resized
+        window.addEventListener('resize', positionAndSizeChildren);
+    </script>
+</body>
+</html>
