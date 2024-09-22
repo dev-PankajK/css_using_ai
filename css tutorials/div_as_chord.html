@@ -6,12 +6,13 @@
     <title>Circular Container with Accurate Chord-Width Children</title>
     <style>
         .circle {
-            width: 32rem;
-            height: 32rem;
+            width: 74rem;
+            height: 74rem;
             border-radius: 50%;
             background-color: lightblue;
             position: relative;
             overflow: hidden;
+            margin: 0 auto;
         }
 
         .child {
@@ -21,7 +22,7 @@
             border: 2px solid red;
             background-color: beige;
             margin: 2px 0;
-            height: 30px;
+            height: 100px;
             white-space: nowrap;
             overflow: hidden;
             display: flex;
@@ -46,6 +47,7 @@
 
     <script>
         function calculateChordWidth(radius, height) {
+        // height of the child from the top/bottom of circle 
             const y = Math.abs(radius - height);
             return 2 * Math.sqrt(radius * radius - y * y);
         }
